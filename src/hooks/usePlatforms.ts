@@ -5,16 +5,24 @@ import { FetchResponse } from "./useData";
 
 interface Platform {
   id: number;
-  name: string;
   slug: string;
+  name: string;
 }
 
 // const usePlatforms = () => ({ data: platforms, isLoading: false, error: null });
-const usePlatforms = () =>
-  useQuery<FetchResponse<Platform>, Error>({
+const usePlatforms = () => {
+  const controller = new AbortController();
+
+  return useQuery<FetchResponse<Platform>, Error>({
     queryKey: CACHE_KEY_PLATFORMS,
-    queryFn: () => apiClient.get<FetchResponse<Platform>>("/platforms"),
+    queryFn: () =>
+      apiClient
+        .get<FetchResponse<Platform>>("/platforms/lists/parents", {
+          signal: controller.signal,
+        })
+        .then((res) => res.data),
     staleTime: 24 * 60 * 60 * 1000,
   });
+};
 
 export default usePlatforms;
