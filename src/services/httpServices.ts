@@ -1,5 +1,5 @@
-import { FetchResponse } from "../hooks/useData";
-import apiClient from "./api-client";
+import { AxiosRequestConfig } from "axios";
+import apiClient, { FetchResponse } from "./api-client";
 
 export class HttpServices<T> {
   endpoint: string;
@@ -8,7 +8,7 @@ export class HttpServices<T> {
     this.endpoint = endpoint;
   }
 
-  getAll = () =>
+  getAll = (requestConfig?: AxiosRequestConfig) =>
     apiClient
       .get<FetchResponse<T>>(this.endpoint)
       .then((res) => res.data);
