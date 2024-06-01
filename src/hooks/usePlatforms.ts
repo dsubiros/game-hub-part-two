@@ -4,7 +4,7 @@ import HttpServices from "../services/httpServices";
 import platforms from "../data/platforms";
 import { FetchResponse } from "../services/api-client";
 
-interface Platform {
+export interface Platform {
   id: number;
   slug: string;
   name: string;

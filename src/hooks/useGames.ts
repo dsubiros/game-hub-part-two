@@ -3,12 +3,7 @@ import { GameQuery } from "../App";
 import { CACHE_KEY_GAMES } from "../constants";
 import HttpServices from "../services/httpServices";
 import { FetchResponse } from "../services/api-client";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import {Platform} from "./usePlatforms";
 
 export interface Game {
   id: number;
