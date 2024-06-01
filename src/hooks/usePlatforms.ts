@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { CACHE_KEY_PLATFORMS } from "../constants";
-import HttpServices from "../services/httpServices";
+// import HttpServices from "../services/httpServices";
 import platforms from "../data/platforms";
-import { FetchResponse } from "../services/api-client";
+import ApiClient, { FetchResponse } from "../services/apiClient";
 
 export interface Platform {
   id: number;
@@ -10,14 +10,15 @@ export interface Platform {
   name: string;
 }
 
-const platformServices = new HttpServices<Platform>("/platforms/lists/parents");
+// const platformServices = new HttpServices<Platform>("/platforms/lists/parents");
+const apiClient = new ApiClient<Platform>("/platforms/lists/parents");
 
 const usePlatforms = () =>
   useQuery<FetchResponse<Platform>, Error>({
     queryKey: CACHE_KEY_PLATFORMS , 
-    queryFn: platformServices.getAll,
+    queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000,
-    initialData: {count: platforms.length, results: platforms}
+    initialData: {count: platforms.length, results: platforms as Platform[]}
   });
 
 // // const usePlatforms = () => ({ data: platforms, isLoading: false, error: null });
