@@ -15,10 +15,10 @@ const apiClient = new ApiClient<Platform>("/platforms/lists/parents");
 
 const usePlatforms = () =>
   useQuery<FetchResponse<Platform>, Error>({
-    queryKey: CACHE_KEY_PLATFORMS , 
+    queryKey: CACHE_KEY_PLATFORMS, 
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000,
-    initialData: {count: platforms.length, results: platforms as Platform[]}
+    initialData: {count: platforms.length, results: platforms as Platform[], next: null }
   });
 
 // // const usePlatforms = () => ({ data: platforms, isLoading: false, error: null });

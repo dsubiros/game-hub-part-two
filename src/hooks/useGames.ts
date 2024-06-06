@@ -17,11 +17,15 @@ const apiClient = new ApiClient<Game>("/games");
 
 const useGames = (gameQuery: GameQuery) => {
   const params: any = {
-    genres: gameQuery.genre?.id,
-    parent_platforms: gameQuery.platform?.id,
+    // genres: gameQuery.genre?.id,
+    genres: gameQuery.genreId,
+    // parent_platforms: gameQuery.platform?.id,
+    parent_platforms: gameQuery.platformId,
     ordering: gameQuery.sortOrder,
     search: gameQuery.searchText,
   };
+
+  // debugger
 
   return useInfiniteQuery<FetchResponse<Game>, Error>({
     queryKey: [CACHE_KEY_GAMES, gameQuery],
