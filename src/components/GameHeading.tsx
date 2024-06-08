@@ -14,8 +14,8 @@ const GameHeading = ({ gameQuery: {platformId, genreId} }: Props) => {
   const {data: platforms} = usePlatforms();
   const {data: genres} = useGenres();
 
-  const platform = platforms.results.find(p => p.id === platformId);
-  const genre = genres.results.find(p => p.id === genreId);
+  const platform = platforms?.results.find(p => p.id === platformId);
+  const genre = genres?.results.find(p => p.id === genreId);
 
   const heading = `${platform?.name || ''} ${genre?.name || ''} Games`;
 
