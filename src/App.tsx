@@ -1,25 +1,15 @@
-import { Box, Flex, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
-import { useState } from "react";
+import { Box, Flex, Grid, GridItem, Show } from "@chakra-ui/react";
 import GameGrid from "./components/GameGrid";
 import GameHeading from "./components/GameHeading";
 import GenreList from "./components/GenreList";
 import NavBar from "./components/NavBar";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
-import { Genre } from "./hooks/useGenres";
-import { Platform } from "./hooks/usePlatforms";
-
-export interface GameQuery {
-  // genre: Genre | null;
-  genreId?: number;
-  // platform: Platform | null;
-  platformId?: number;
-  sortOrder: string;
-  searchText: string;
-}
+import useGameQueryStore from "./store";
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  // const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+  const { gameQuery, setGameQuery } = useGameQueryStore();
 
   return (
     <Grid
@@ -42,7 +32,7 @@ function App() {
           {/* <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre})} /> */}
           <GenreList
             selectedGenreId={gameQuery.genreId}
-            onSelectGenre={genre =>
+            onSelectGenre={(genre) =>
               setGameQuery({ ...gameQuery, genreId: genre?.id })
             }
           />
@@ -59,7 +49,7 @@ function App() {
                 onSelectPlatform={(platform) =>
                   setGameQuery({
                     ...gameQuery,
-                    platformId: platform?.id
+                    platformId: platform?.id,
                   })
                 }
               />
