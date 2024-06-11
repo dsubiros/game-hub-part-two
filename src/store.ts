@@ -9,7 +9,7 @@ interface GameQuery {
 
 interface GameQueryStore {
   gameQuery: GameQuery;
-  setGameQuery: (query: GameQuery) => void;
+  // setGameQuery: (query: GameQuery) => void;
   setGenreId: (genreId: number) => void;
   setPlatformId: (platformId: number) => void;
   setSearchText: (searchText: string) => void;
