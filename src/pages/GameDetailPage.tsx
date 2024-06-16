@@ -1,8 +1,11 @@
-import React from 'react'
+import { useLocation, useParams } from "react-router-dom";
 
 const GameDetailPage = () => {
+  const {id} = useParams();
+  console.log(id);
+
   return (
-    <div>GameDetailPage</div>
+    <div>GameDetailPage ({id})</div>
   )
 }
 
