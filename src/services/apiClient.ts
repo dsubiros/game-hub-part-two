@@ -1,4 +1,4 @@
-import axios, {AxiosRequestConfig} from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { Game } from "../hooks/useGames";
 
 export interface FetchResponse<T> {
@@ -21,16 +21,17 @@ class ApiClient<T> {
     this.endpoint = endpoint;
   }
 
-  getAll = (config: AxiosRequestConfig ) => {
-    return axiosInstance.get<FetchResponse<T>>(this.endpoint, config)
+  getAll = (config: AxiosRequestConfig) => {
+    return axiosInstance
+      .get<FetchResponse<T>>(this.endpoint, config)
       .then((res) => res.data);
-  }
+  };
 
-  // get = (id: number|string, config: AxiosRequestConfig) => {
-  get = (id: number|string) => {
-    return axiosInstance.get<Game>(`${this.endpoint}/${id}`)
-    .then(res => res.data);
-  }
+  get = (id: number | string) => {
+    return axiosInstance
+      .get<Game>(`${this.endpoint}/${id}`)
+      .then((res) => res.data);
+  };
 }
 
 export default ApiClient;
