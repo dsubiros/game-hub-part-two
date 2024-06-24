@@ -11,7 +11,7 @@ const useGame = (slug: string) =>
   useQuery<Game, Error>({
     queryKey: [CACHE_KEY_GAME, slug],
     queryFn: () => apiClient.get(slug),
-    // staleTime: ms("24h"),
+    staleTime: ms("24h"),
   });
 
 export default useGame;
