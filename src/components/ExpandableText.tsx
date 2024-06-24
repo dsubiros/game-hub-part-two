@@ -10,11 +10,8 @@ const ExpandableText = ({ children, max }: Props) => {
   const [expanded, setExpanded] = useState(false);
 
   if (!children) return null;
-  
-  if (children.length <= max) return <Text>{children}</Text>;
 
-  // const isLongText = text.length > max;
-  // const aText = expanded || !isLongText ? text : text.substring(0, max);
+  if (children.length <= max) return <Text>{children}</Text>;
 
   const summary = expanded ? children : children.substring(0, max) + "...";
 
