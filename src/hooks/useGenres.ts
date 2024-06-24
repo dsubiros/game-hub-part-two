@@ -3,14 +3,9 @@ import { CACHE_KEY_GENRES } from "../constants";
 import genres from "../data/genres";
 import ApiClient, { FetchResponse } from "../services/apiClient";
 import ms from 'ms';
+import { Genre } from "../entities/Genre";
 
 const apiClient = new ApiClient<Genre>("/genres");
-
-export interface Genre {
-  id: number;
-  name: string;
-  image_background: string;
-}
 
 const useGenres = () => {
   return useQuery<FetchResponse<Genre>, Error>({

@@ -3,7 +3,7 @@ import ms from "ms";
 import { CACHE_KEY_GAME } from "../constants";
 import ApiClient from "../services/apiClient";
 // TODO:  Should move Game interface to a common place
-import { Game } from "./useGames";
+import { Game } from "../entities/Game";
 
 const apiClient = new ApiClient<Game>("/games");
 
