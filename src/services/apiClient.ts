@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { Game } from "../entities/Game";
+import { Trailer } from "../entities/Trailer";
 
 export interface FetchResponse<T> {
   count: number;
@@ -32,6 +33,11 @@ class ApiClient<T> {
       .get<Game>(`${this.endpoint}/${id}`)
       .then((res) => res.data);
   };
+
+  // getGameMovies = (id: number | string) =>
+  //   axiosInstance
+  //     .get<FetchResponse<T>>(`${this.endpoint}/${id}/movies`)
+  //     .then((res) => res.data);
 }
 
 export default ApiClient;
