@@ -14,8 +14,7 @@ const GameScreenshots = ({ gameId }: Props) => {
   return (
     <SimpleGrid
       spacing={2}
-      padding={5}
-    //   columns={{md: 1, lg: 2}}
+    //   padding={5}
       columns={{base: 1, md: 2}}
     >
       {data?.results
