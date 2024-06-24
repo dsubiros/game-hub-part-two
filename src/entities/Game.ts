@@ -1,5 +1,5 @@
 import { Genre } from "./Genre";
-import { Platform } from "./Platform";
+import { Platform } from "../hooks/Platform";
 import { Publisher } from "./Publisher";
 
 
