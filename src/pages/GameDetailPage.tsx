@@ -1,7 +1,8 @@
 import { Heading, HStack, Spinner, Text } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ExpandableText from "../components/ExpandableText";
 import GameAttributes from "../components/GameAttributes";
+import GameScreenshots from "../components/GameScreenshots";
 import GameTrailer from "../components/GameTrailer";
 import useGame from "../hooks/useGame";
 
@@ -20,13 +21,17 @@ const GameDetailPage = () => {
     );
 
   if (error || !game) throw error;
-   
+
   return (
     <>
-      <Heading>{game.name}</Heading>
+      <Link to="/">Go Back</Link>
+
+      <Heading marginY={5}>{game.name}</Heading>
       <ExpandableText max={300}>{game.description_raw}</ExpandableText>
-      <GameAttributes game={game}/>
-      <GameTrailer gameId={game.id}/>
+      <GameAttributes game={game} />
+      <GameTrailer gameId={game.id} />
+
+      <GameScreenshots gameId={game.id} />
     </>
   );
 };
